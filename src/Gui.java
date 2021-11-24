@@ -39,7 +39,7 @@ public class Gui {
 
     public Gui() {
 
-        comboBoxFill();
+        initialization();
 
         connectButton.addActionListener(new ActionListener() {
             @Override
@@ -59,6 +59,15 @@ public class Gui {
                 System.out.println("}");
             }
         });
+    }
+
+    private void initialization(){
+        comboBoxFill();
+        initValues();
+    }
+
+    private void initValues() {
+        baudRateSpinner.setValue(115200);
     }
 
     private void comboBoxFill() {
@@ -84,6 +93,7 @@ public class Gui {
     }
     public void sendData(){
         serial.sendDataToSTM(stmDiodeCheckBox.isSelected(),greenDiodeCheckBox.isSelected(),redDiodeCheckBox.isSelected());
+
     }
 
     private void loginCorrect(){

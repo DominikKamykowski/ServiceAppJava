@@ -1,8 +1,5 @@
 import com.fazecast.jSerialComm.SerialPort;
 
-import java.net.PortUnreachableException;
-
-
 public class SerialPortClass {
 
     private static final int numberOfSendValues = 3;
@@ -12,10 +9,6 @@ public class SerialPortClass {
 
     public void setPort(SerialPort comPort) {
         this.port = comPort;
-    }
-
-    public SerialPort getPort() {
-        return port;
     }
 
     public void openPort(){
