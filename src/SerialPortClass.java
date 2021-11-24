@@ -7,6 +7,7 @@ public class SerialPortClass {
 
     SerialPort port = SerialPort.getCommPort("COM6");
 
+
     public SerialPortClass(int baudRate){
         System.out.println("SerialPort BaudRate: "+baudRate);
         try{
@@ -18,7 +19,6 @@ public class SerialPortClass {
             e.printStackTrace();
         }
     }
-
 
     private void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){
         try{
