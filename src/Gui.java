@@ -16,6 +16,7 @@ public class Gui {
     private JSpinner comSpinner;
     private JButton connectButton;
     private JPanel panel1;
+    private JSpinner baudRateSpinner;
 
     //Other
     SerialPortClass serial = new SerialPortClass(115200, "COM"+comSpinner.getValue().toString());
@@ -51,7 +52,7 @@ public class Gui {
             frame.setContentPane(new Gui().panel1);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
-            frame.setSize(800,400);
+            frame.setSize(400,400);
             frame.setVisible(true);
 
         }catch(Exception e){
