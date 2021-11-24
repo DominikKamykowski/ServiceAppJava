@@ -1,6 +1,6 @@
 public class Login {
-    private final String login = "ZMT";
-    private final String password = "!QAZ2wsx";
+    private final String login = "";
+    private final String password = "";
 
     private int numberOfBadLogin=0;
 
