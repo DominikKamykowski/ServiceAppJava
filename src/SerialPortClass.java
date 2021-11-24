@@ -23,8 +23,6 @@ public class SerialPortClass {
             port.setBaudRate(this.baudRate);
             port.openPort();
 
-
-
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -35,15 +33,14 @@ public class SerialPortClass {
         this.port = port;
     }
 
-    private void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){
+    public void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){
         try{
             byte[] dataToWrite = {1,1,numberOfSendValues,(byte) ledState(diodeStmState),(byte) ledState(diodeGreenState),
-                    (byte)ledState(diodeRedState)};
+                                 (byte)ledState(diodeRedState)};
             port.writeBytes(dataToWrite,dataToWrite.length);
 
         }catch(Exception e){
             e.printStackTrace();
-
         }
     }
 
