@@ -4,20 +4,33 @@ import com.fazecast.jSerialComm.SerialPort;
 public class SerialPortClass {
 
     private static final int numberOfSendValues = 3;
+    private int baudRate;
+    private String comPort;
 
-    SerialPort port = SerialPort.getCommPort("COM6");
+    private SerialPort port;
 
+    public void setComPort(String comPort) {
+        this.comPort = comPort;
+    }
 
-    public SerialPortClass(int baudRate){
-        System.out.println("SerialPort BaudRate: "+baudRate);
-        try{
+    public SerialPort getPort() {
+        return port;
+    }
+
+    public void openPort(){
+        try {
+            port.setBaudRate(this.baudRate);
+            port = SerialPort.getCommPort(comPort);
             port.openPort();
-            port.setBaudRate(baudRate);
-            System.out.println("Port name: "+port.getSystemPortName());
-
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public SerialPortClass(int baudRate, String comPort) {
+        this.baudRate = baudRate;
+        this.comPort = comPort;
+        port = SerialPort.getCommPort(comPort);
     }
 
     private void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){
