@@ -38,7 +38,9 @@ public class Gui {
     };
 
     //Other
-    SerialPortClass serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) cbPorts.getSelectedItem());
+    SerialPortClass serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) cbPorts.getSelectedItem(),
+                                                  cbParity.getSelectedIndex(),cbFlowControl.getSelectedIndex(),
+                                                  (int)spinnerDataBits.getValue(),cbStopBits.getSelectedIndex()+1);
 
 
     public Gui() {
@@ -63,10 +65,17 @@ public class Gui {
                 System.out.println("}");
             }
         });
+        cbStopBits.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Stop Bit Index: "+cbStopBits.getSelectedIndex());
+            }
+        });
     }
 
     private void initialization(){
         comboBoxFill();
+
         initValues();
     }
 
@@ -75,10 +84,14 @@ public class Gui {
     }
 
     private void comboBoxFill() {
-        SerialPort[] ports = SerialPortClass.fillComboBox();
+        SerialPort[] ports = SerialPortClass.fillSerialComboBox();
         for(SerialPort port : ports){
             cbPorts.addItem(port);
         }
+        cbStopBits.addItem(1);
+        cbStopBits.addItem(1.5);
+        cbStopBits.addItem(2);
+
     }
 
     public static void main (String[] args){
@@ -87,7 +100,7 @@ public class Gui {
             frame.setContentPane(new Gui().panel1);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
-            frame.setSize(400,400);
+            frame.setSize(700,400);
             frame.setVisible(true);
 
         }catch(Exception e){
@@ -101,7 +114,9 @@ public class Gui {
     }
 
     private void loginCorrect(){
-        serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) cbPorts.getSelectedItem());
+        serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) cbPorts.getSelectedItem(),
+                                    cbParity.getSelectedIndex(),cbFlowControl.getSelectedIndex(),
+                                    (int)spinnerDataBits.getValue(),cbStopBits.getSelectedIndex()+1);
         serial.setPort(((SerialPort) cbPorts.getSelectedItem()));
         serial.openPort();
         editorPane1.setText("Make sure You set the properly Baud Rate!");

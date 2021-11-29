@@ -1,9 +1,16 @@
 import com.fazecast.jSerialComm.SerialPort;
 
+import java.io.Serial;
+
 public class SerialPortClass {
 
     private static final int numberOfSendValues = 3;
     private int baudRate;
+    private int parity;
+    private int flowControl;
+    private int dataBits;
+    private int stopBits;
+
 
     private SerialPort port;
 
@@ -13,7 +20,7 @@ public class SerialPortClass {
 
     public void openPort(){
         try {
-            port.setBaudRate(this.baudRate);
+            port.setComPortParameters(this.baudRate,this.dataBits,this.stopBits,this.parity);
             port.openPort();
 
         }catch(Exception e){
@@ -21,7 +28,11 @@ public class SerialPortClass {
         }
     }
 
-    public SerialPortClass(int baudRate, SerialPort port) {
+    public SerialPortClass(int baudRate, SerialPort port, int parity,int flowControl, int dataBits, int stopBits) {
+        this.parity = parity;
+        this.flowControl = flowControl;
+        this.dataBits = dataBits;
+        this.stopBits = stopBits;
         this.baudRate = baudRate;
         this.port = port;
     }
@@ -42,10 +53,12 @@ public class SerialPortClass {
         else return 10;
     }
 
-    public static SerialPort[] fillComboBox(){
+    public static SerialPort[] fillSerialComboBox(){
         SerialPort[] ports = SerialPort.getCommPorts();
-        for (SerialPort port :ports) {
+        for (SerialPort port : ports) {
             System.out.println(port.getSystemPortName());
         }return ports;
+        
     }
+
 }
