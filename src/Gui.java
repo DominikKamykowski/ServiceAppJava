@@ -2,8 +2,12 @@ import com.fazecast.jSerialComm.SerialPort;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.*;
+import java.time.LocalDateTime;
 
 public class Gui {
     //Login
@@ -42,8 +46,22 @@ public class Gui {
                                                   cbParity.getSelectedIndex(),cbFlowControl.getSelectedIndex(),
                                                   (int)spinnerDataBits.getValue(),cbStopBits.getSelectedIndex()+1);
 
+    private static final Logger LOGGER = Logger.getLogger("MyLog");
+    FileHandler fileHandler;
+
 
     public Gui() {
+
+        try {
+            fileHandler = new FileHandler("C:/Users/Dominik/IdeaProjects/ServiceApplicationJava/logs/"+java.time.LocalDate.now()+".log",true);
+            LOGGER.addHandler(fileHandler);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fileHandler.setFormatter(formatter);
+
+            LOGGER.info("Init Gui");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         initialization();
 
@@ -51,7 +69,7 @@ public class Gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Button Listener{");
-
+                LOGGER.info("Button clicked.");
                 Login login = new Login();
                 if(!login.tryToLogIn(loginField.getText(), passField.getText())){
                     loginCorrect();
@@ -102,6 +120,8 @@ public class Gui {
             frame.pack();
             frame.setSize(700,400);
             frame.setVisible(true);
+
+
 
         }catch(Exception e){
             e.printStackTrace();

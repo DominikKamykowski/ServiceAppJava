@@ -1,6 +1,10 @@
 import com.fazecast.jSerialComm.SerialPort;
 
+import java.io.IOException;
 import java.io.Serial;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class SerialPortClass {
 
@@ -11,6 +15,8 @@ public class SerialPortClass {
     private int dataBits;
     private int stopBits;
 
+    private static final Logger LOGGER = Logger.getLogger("MyLog");
+    FileHandler fileHandler;
 
     private SerialPort port;
 
@@ -35,6 +41,17 @@ public class SerialPortClass {
         this.stopBits = stopBits;
         this.baudRate = baudRate;
         this.port = port;
+
+        try {
+            fileHandler = new FileHandler("C:/Users/Dominik/IdeaProjects/ServiceApplicationJava/logs/"+java.time.LocalDate.now()+".log",true);
+            LOGGER.addHandler(fileHandler);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fileHandler.setFormatter(formatter);
+
+            LOGGER.info("Init Serial");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){
@@ -58,7 +75,7 @@ public class SerialPortClass {
         for (SerialPort port : ports) {
             System.out.println(port.getSystemPortName());
         }return ports;
-        
+
     }
 
 }
