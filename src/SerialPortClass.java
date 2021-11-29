@@ -1,7 +1,7 @@
 import com.fazecast.jSerialComm.SerialPort;
-
+import java.io.StringWriter;
+import java.io.PrintWriter;
 import java.io.IOException;
-import java.io.Serial;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -15,8 +15,8 @@ public class SerialPortClass {
     private int dataBits;
     private int stopBits;
 
-    private static final Logger LOGGER = Logger.getLogger("MyLog");
-    FileHandler fileHandler;
+    private static final Logger LOGGER = Gui.getLOGGER();
+
 
     private SerialPort port;
 
@@ -28,9 +28,13 @@ public class SerialPortClass {
         try {
             port.setComPortParameters(this.baudRate,this.dataBits,this.stopBits,this.parity);
             port.openPort();
+            port.openPort();
 
         }catch(Exception e){
-            e.printStackTrace();
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            LOGGER.warning(sw.toString());
         }
     }
 
@@ -41,17 +45,7 @@ public class SerialPortClass {
         this.stopBits = stopBits;
         this.baudRate = baudRate;
         this.port = port;
-
-        try {
-            fileHandler = new FileHandler("C:/Users/Dominik/IdeaProjects/ServiceApplicationJava/logs/"+java.time.LocalDate.now()+".log",true);
-            LOGGER.addHandler(fileHandler);
-            SimpleFormatter formatter = new SimpleFormatter();
-            fileHandler.setFormatter(formatter);
-
-            LOGGER.info("Init Serial");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        LOGGER.info("Init Serial, BaudRade: "+baudRate);
     }
 
     public void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){

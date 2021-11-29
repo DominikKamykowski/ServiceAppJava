@@ -46,6 +46,10 @@ public class Gui {
                                                   cbParity.getSelectedIndex(),cbFlowControl.getSelectedIndex(),
                                                   (int)spinnerDataBits.getValue(),cbStopBits.getSelectedIndex()+1);
 
+    public static Logger getLOGGER() {
+        return LOGGER;
+    }
+
     private static final Logger LOGGER = Logger.getLogger("MyLog");
     FileHandler fileHandler;
 
