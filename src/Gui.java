@@ -19,8 +19,12 @@ public class Gui {
     private JButton connectButton;
     private JPanel panel1;
     private JSpinner baudRateSpinner;
-    private JComboBox comboBox1;
+    private JComboBox cbPorts;
     private JEditorPane editorPane1;
+    private JComboBox cbStopBits;
+    private JSpinner spinnerDataBits;
+    private JComboBox cbParity;
+    private JComboBox cbFlowControl;
 
     //Timer
     private boolean connectFlag = false;
@@ -34,7 +38,7 @@ public class Gui {
     };
 
     //Other
-    SerialPortClass serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) comboBox1.getSelectedItem());
+    SerialPortClass serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) cbPorts.getSelectedItem());
 
 
     public Gui() {
@@ -73,7 +77,7 @@ public class Gui {
     private void comboBoxFill() {
         SerialPort[] ports = SerialPortClass.fillComboBox();
         for(SerialPort port : ports){
-            comboBox1.addItem(port);
+            cbPorts.addItem(port);
         }
     }
 
@@ -97,8 +101,8 @@ public class Gui {
     }
 
     private void loginCorrect(){
-        serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) comboBox1.getSelectedItem());
-        serial.setPort(((SerialPort) comboBox1.getSelectedItem()));
+        serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) cbPorts.getSelectedItem());
+        serial.setPort(((SerialPort) cbPorts.getSelectedItem()));
         serial.openPort();
         editorPane1.setText("Make sure You set the properly Baud Rate!");
         if(!connectFlag){
