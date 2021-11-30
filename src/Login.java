@@ -2,8 +2,6 @@ public class Login {
     private final String login = "";
     private final String password = "";
 
-    private int numberOfBadLogin=0;
-
     public Login() {
     }
 

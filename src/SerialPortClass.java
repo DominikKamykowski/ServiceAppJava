@@ -1,10 +1,8 @@
 import com.fazecast.jSerialComm.SerialPort;
-import java.io.StringWriter;
+
 import java.io.PrintWriter;
-import java.io.IOException;
-import java.util.logging.FileHandler;
+import java.io.StringWriter;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 public class SerialPortClass {
 
@@ -27,7 +25,7 @@ public class SerialPortClass {
     public void openPort(){
         try {
             port.setComPortParameters(this.baudRate,this.dataBits,this.stopBits,this.parity);
-            port.openPort();
+            port.setFlowControl(this.flowControl);
             port.openPort();
 
         }catch(Exception e){

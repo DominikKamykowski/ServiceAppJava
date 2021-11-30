@@ -1,13 +1,12 @@
 import com.fazecast.jSerialComm.SerialPort;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.*;
-import java.time.LocalDateTime;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Gui {
     //Login
@@ -23,12 +22,11 @@ public class Gui {
     private JButton connectButton;
     private JPanel panel1;
     private JSpinner baudRateSpinner;
-    private JComboBox cbPorts;
-    private JEditorPane editorPane1;
-    private JComboBox cbStopBits;
+    private JComboBox<SerialPort> cbPorts;
+    private JComboBox<Number> cbStopBits;
     private JSpinner spinnerDataBits;
-    private JComboBox cbParity;
-    private JComboBox cbFlowControl;
+    private JComboBox<Integer> cbParity;
+    private JComboBox<Integer> cbFlowControl;
 
     //Timer
     private boolean connectFlag = false;
@@ -49,7 +47,6 @@ public class Gui {
     public static Logger getLOGGER() {
         return LOGGER;
     }
-
     private static final Logger LOGGER = Logger.getLogger("MyLog");
     FileHandler fileHandler;
 
@@ -69,28 +66,25 @@ public class Gui {
 
         initialization();
 
-        connectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Button Listener{");
-                LOGGER.info("Button clicked.");
-                Login login = new Login();
-                if(!login.tryToLogIn(loginField.getText(), passField.getText())){
-                    loginCorrect();
-                }else if((!(login.tryToLogIn(loginField.getText(), passField.getText())))&&numberOfBadLogin<maxBadLoginNumber){
-                    System.out.println("Login failed! Try number: "+(numberOfBadLogin+1));
-                    numberOfBadLogin++;
-                }else{
-                    System.exit(0);
-                }
+        connectButton.addActionListener(e -> {
 
-                System.out.println("}");
+            LOGGER.info("connectButton clicked.");
+            Login login = new Login();
+            if(!login.tryToLogIn(loginField.getText(), passField.getText())){
+                loginCorrect();
+            }else if((!(login.tryToLogIn(loginField.getText(), passField.getText())))&&numberOfBadLogin<maxBadLoginNumber){
+                System.out.println("Login failed! Try number: "+(numberOfBadLogin+1));
+                numberOfBadLogin++;
+            }else{
+                System.exit(0);
             }
         });
-        cbStopBits.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Stop Bit Index: "+cbStopBits.getSelectedIndex());
+        cbStopBits.addActionListener(e -> System.out.println("Stop Bit Index: "+cbStopBits.getSelectedIndex()));
+        stmDiodeCheckBox.addActionListener(e -> {
+            if(stmDiodeCheckBox.isSelected()){
+                LOGGER.info("stmDiodeCheckBox selected");
+            }else{
+                LOGGER.info("stmDiodeCheckBox unselected");
             }
         });
     }
@@ -103,6 +97,7 @@ public class Gui {
 
     private void initValues() {
         baudRateSpinner.setValue(115200);
+        spinnerDataBits.setValue(8);
     }
 
     private void comboBoxFill() {
@@ -114,6 +109,19 @@ public class Gui {
         cbStopBits.addItem(1.5);
         cbStopBits.addItem(2);
 
+        cbParity.addItem(SerialPort.NO_PARITY);
+        cbParity.addItem(SerialPort.ODD_PARITY);
+        cbParity.addItem(SerialPort.EVEN_PARITY);
+        cbParity.addItem(SerialPort.MARK_PARITY);
+        cbParity.addItem(SerialPort.SPACE_PARITY);
+
+        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_DISABLED);
+        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_RTS_ENABLED);
+        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_CTS_ENABLED);
+        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_DSR_ENABLED);
+        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_DTR_ENABLED);
+        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_XONXOFF_IN_ENABLED);
+        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_XONXOFF_OUT_ENABLED);
     }
 
     public static void main (String[] args){
@@ -143,7 +151,6 @@ public class Gui {
                                     (int)spinnerDataBits.getValue(),cbStopBits.getSelectedIndex()+1);
         serial.setPort(((SerialPort) cbPorts.getSelectedItem()));
         serial.openPort();
-        editorPane1.setText("Make sure You set the properly Baud Rate!");
         if(!connectFlag){
             timer.schedule(task,100,50);
             connectFlag = true;
