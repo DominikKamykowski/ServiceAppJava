@@ -15,7 +15,6 @@ public class SerialPortClass {
 
     private static final Logger LOGGER = Gui.getLOGGER();
 
-
     private SerialPort port;
 
     public void setPort(SerialPort comPort) {
@@ -51,6 +50,7 @@ public class SerialPortClass {
             byte[] dataToWrite = {1,1,numberOfSendValues,(byte) ledState(diodeStmState),(byte) ledState(diodeGreenState),
                                  (byte)ledState(diodeRedState)};
             port.writeBytes(dataToWrite,dataToWrite.length);
+            LOGGER.info("Data Send: StmDiode: "+diodeStmState+" greenDiode: "+diodeGreenState+" redDiode: "+diodeRedState );
 
         }catch(Exception e){
             e.printStackTrace();

@@ -1,5 +1,4 @@
 import com.fazecast.jSerialComm.SerialPort;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.util.Timer;
@@ -27,6 +26,7 @@ public class Gui {
     private JSpinner spinnerDataBits;
     private JComboBox<Integer> cbParity;
     private JComboBox<Integer> cbFlowControl;
+    private JPasswordField passwordField;
 
     //Timer
     private boolean connectFlag = false;
@@ -47,7 +47,9 @@ public class Gui {
     public static Logger getLOGGER() {
         return LOGGER;
     }
+
     private static final Logger LOGGER = Logger.getLogger("MyLog");
+
     FileHandler fileHandler;
 
 
@@ -70,8 +72,8 @@ public class Gui {
 
             LOGGER.info("connectButton clicked.");
             Login login = new Login();
-            if(!login.tryToLogIn(loginField.getText(), passField.getText())){
-                loginCorrect();
+            if(!login.tryToLogIn(loginField.getText(), new String((passField.getText())))){
+                 loginCorrect();
             }else if((!(login.tryToLogIn(loginField.getText(), passField.getText())))&&numberOfBadLogin<maxBadLoginNumber){
                 System.out.println("Login failed! Try number: "+(numberOfBadLogin+1));
                 numberOfBadLogin++;
@@ -126,14 +128,12 @@ public class Gui {
 
     public static void main (String[] args){
         try{
-            JFrame frame = new JFrame("Service Application");
-            frame.setContentPane(new Gui().panel1);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.pack();
-            frame.setSize(700,400);
-            frame.setVisible(true);
-
-
+            JFrame frame1 = new JFrame("Test");
+            frame1.setContentPane(new Gui().panel1);
+            frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame1.pack();
+            frame1.setSize(700,400);
+            frame1.setVisible(true);
 
         }catch(Exception e){
             e.printStackTrace();

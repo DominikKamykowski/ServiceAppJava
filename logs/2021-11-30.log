@@ -28,3 +28,13 @@ lis 30, 2021 7:16:35 AM Gui <init>
 INFO: Init Gui
 lis 30, 2021 7:27:42 AM Gui <init>
 INFO: Init Gui
+lis 30, 2021 7:33:05 AM Gui <init>
+INFO: Init Gui
+lis 30, 2021 9:01:04 AM Gui <init>
+INFO: Init Gui
+lis 30, 2021 10:57:12 AM Gui <init>
+INFO: Init Gui
+lis 30, 2021 10:58:12 AM Gui lambda$new$0
+INFO: connectButton clicked.
+lis 30, 2021 10:58:12 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
