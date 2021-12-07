@@ -12,6 +12,9 @@ public class SerialPortClass {
     private int flowControl;
     private int dataBits;
     private int stopBits;
+    private int numberOfDataSend = 0;
+    private byte[] previousData;
+    private boolean firstDataSendFlag=true;
 
     private static final Logger LOGGER = Gui.getLOGGER();
 
@@ -44,16 +47,33 @@ public class SerialPortClass {
         this.port = port;
         LOGGER.info("Init Serial, BaudRade: "+baudRate);
     }
+    public SerialPortClass(){
+
+    }
 
     public void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){
         try{
+
+            Convert byteCompare = new Convert();
             byte[] dataToWrite = {1,1,numberOfSendValues,(byte) ledState(diodeStmState),(byte) ledState(diodeGreenState),
                                  (byte)ledState(diodeRedState)};
+            if(firstDataSendFlag){
+                previousData = dataToWrite;
+                firstDataSendFlag = false;
+            }
+            if(byteCompare.compare(dataToWrite,previousData)){
+                LOGGER.info("numberOfDataSend: "+numberOfDataSend+" Data Send: StmDiode: "+diodeStmState+
+                            " greenDiode: "+diodeGreenState+" redDiode: "+diodeRedState);
+            }
             port.writeBytes(dataToWrite,dataToWrite.length);
-            LOGGER.info("Data Send: StmDiode: "+diodeStmState+" greenDiode: "+diodeGreenState+" redDiode: "+diodeRedState );
-
+            previousData=dataToWrite;
+            numberOfDataSend++;
         }catch(Exception e){
-            e.printStackTrace();
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            LOGGER.warning(sw.toString());
+
         }
     }
 
@@ -69,5 +89,7 @@ public class SerialPortClass {
         }return ports;
 
     }
+
+
 
 }

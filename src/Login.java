@@ -1,12 +1,10 @@
 import java.util.logging.Logger;
 
 public class Login {
-    private final String login = "";
-    private final String password = "";
+    private final String login = "ZMT";
+    private final String password = "!QAZ2wsx";
 
     private static final Logger LOGGER = Gui.getLOGGER();
-
-
 
     public Login() {
     }

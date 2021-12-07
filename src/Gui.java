@@ -1,6 +1,8 @@
 import com.fazecast.jSerialComm.SerialPort;
 import javax.swing.*;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.FileHandler;
@@ -17,16 +19,15 @@ public class Gui {
     private JCheckBox redDiodeCheckBox;
     private JCheckBox greenDiodeCheckBox;
     private JTextField loginField;
-    private JTextField passField;
     private JButton connectButton;
     private JPanel panel1;
-    private JSpinner baudRateSpinner;
     private JComboBox<SerialPort> cbPorts;
     private JComboBox<Number> cbStopBits;
-    private JSpinner spinnerDataBits;
-    private JComboBox<Integer> cbParity;
-    private JComboBox<Integer> cbFlowControl;
+    private JComboBox<String> cbParity;
+    private JComboBox<String> cbFlowControl;
     private JPasswordField passwordField;
+    private JComboBox<Integer> cbBaudRate;
+    private JComboBox<Integer> cbDataBits;
 
     //Timer
     private boolean connectFlag = false;
@@ -40,9 +41,9 @@ public class Gui {
     };
 
     //Other
-    SerialPortClass serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) cbPorts.getSelectedItem(),
-                                                  cbParity.getSelectedIndex(),cbFlowControl.getSelectedIndex(),
-                                                  (int)spinnerDataBits.getValue(),cbStopBits.getSelectedIndex()+1);
+    SerialPortClass serial = new SerialPortClass();//(int)cbBaudRate.getSelectedItem(), (SerialPort) cbPorts.getSelectedItem(),
+         //                                         cbParity.getSelectedIndex(),cbFlowControl.getSelectedIndex(),
+         //                                         (int)cbDataBits.getSelectedItem(),cbStopBits.getSelectedIndex()+1);
 
     public static Logger getLOGGER() {
         return LOGGER;
@@ -63,43 +64,32 @@ public class Gui {
 
             LOGGER.info("Init Gui");
         } catch (IOException e) {
-            e.printStackTrace();
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            LOGGER.warning(sw.toString());
         }
 
-        initialization();
+        comboBoxFill();
 
         connectButton.addActionListener(e -> {
+            System.out.println(cbDataBits.getSelectedItem());
+            System.out.println(cbBaudRate.getSelectedItem());
+            System.out.println(cbFlowControl.getSelectedItem());
+            System.out.println(cbParity.getSelectedItem());
+
 
             LOGGER.info("connectButton clicked.");
             Login login = new Login();
-            if(!login.tryToLogIn(loginField.getText(), new String((passField.getText())))){
+            if(!login.tryToLogIn(loginField.getText(), new String((passwordField.getPassword())))){
                  loginCorrect();
-            }else if((!(login.tryToLogIn(loginField.getText(), passField.getText())))&&numberOfBadLogin<maxBadLoginNumber){
+            }else if((!(login.tryToLogIn(loginField.getText(), new String((passwordField.getPassword())))&&numberOfBadLogin<maxBadLoginNumber))){
                 System.out.println("Login failed! Try number: "+(numberOfBadLogin+1));
                 numberOfBadLogin++;
             }else{
                 System.exit(0);
             }
         });
-        cbStopBits.addActionListener(e -> System.out.println("Stop Bit Index: "+cbStopBits.getSelectedIndex()));
-        stmDiodeCheckBox.addActionListener(e -> {
-            if(stmDiodeCheckBox.isSelected()){
-                LOGGER.info("stmDiodeCheckBox selected");
-            }else{
-                LOGGER.info("stmDiodeCheckBox unselected");
-            }
-        });
-    }
-
-    private void initialization(){
-        comboBoxFill();
-
-        initValues();
-    }
-
-    private void initValues() {
-        baudRateSpinner.setValue(115200);
-        spinnerDataBits.setValue(8);
     }
 
     private void comboBoxFill() {
@@ -111,19 +101,31 @@ public class Gui {
         cbStopBits.addItem(1.5);
         cbStopBits.addItem(2);
 
-        cbParity.addItem(SerialPort.NO_PARITY);
-        cbParity.addItem(SerialPort.ODD_PARITY);
-        cbParity.addItem(SerialPort.EVEN_PARITY);
-        cbParity.addItem(SerialPort.MARK_PARITY);
-        cbParity.addItem(SerialPort.SPACE_PARITY);
+        cbParity.addItem("NO_PARITY");
+        cbParity.addItem("ODD_PARITY");
+        cbParity.addItem("EVEN_PARITY");
+        cbParity.addItem("MARK_PARITY");
+        cbParity.addItem("SPACE_PARITY");
 
-        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_DISABLED);
-        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_RTS_ENABLED);
-        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_CTS_ENABLED);
-        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_DSR_ENABLED);
-        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_DTR_ENABLED);
-        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_XONXOFF_IN_ENABLED);
-        cbFlowControl.addItem(SerialPort.FLOW_CONTROL_XONXOFF_OUT_ENABLED);
+        cbFlowControl.addItem("FLOW_CONTROL_DISABLED");
+        cbFlowControl.addItem("FLOW_CONTROL_RTS");
+        cbFlowControl.addItem("FLOW_CONTROL_CTS");
+        cbFlowControl.addItem("FLOW_CONTROL_DSR");
+        cbFlowControl.addItem("FLOW_CONTROL_DTR");
+        cbFlowControl.addItem("FLOW_CONTROL_XONXOFF_IN");
+        cbFlowControl.addItem("FLOW_CONTROL_XONXOFF_OUT");
+
+        for (int i = 1;i<=8;i++) {
+            cbDataBits.addItem(i);
+        }
+
+        for(int i = 1200;i<=28800;i*=2){
+            cbBaudRate.addItem(i);
+        }
+        cbBaudRate.addItem(38400);
+        cbBaudRate.addItem(57600);
+        cbBaudRate.addItem(76800);
+        cbBaudRate.addItem(115200);
     }
 
     public static void main (String[] args){
@@ -136,19 +138,23 @@ public class Gui {
             frame1.setVisible(true);
 
         }catch(Exception e){
-            e.printStackTrace();
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            LOGGER.warning(sw.toString());
         }
-
     }
+
     public void sendData(){
         serial.sendDataToSTM(stmDiodeCheckBox.isSelected(),greenDiodeCheckBox.isSelected(),redDiodeCheckBox.isSelected());
-
     }
 
     private void loginCorrect(){
-        serial = new SerialPortClass((int)baudRateSpinner.getValue(), (SerialPort) cbPorts.getSelectedItem(),
-                                    cbParity.getSelectedIndex(),cbFlowControl.getSelectedIndex(),
-                                    (int)spinnerDataBits.getValue(),cbStopBits.getSelectedIndex()+1);
+        Convert convert = new Convert();
+
+        serial = new SerialPortClass(convert.baudRateConvert(cbBaudRate.getSelectedIndex()), (SerialPort) cbPorts.getSelectedItem(),
+                                         cbParity.getSelectedIndex(),convert.flowControlConvert(cbFlowControl.getSelectedIndex()),
+                                        (int)cbDataBits.getSelectedItem(),cbStopBits.getSelectedIndex()+1);
         serial.setPort(((SerialPort) cbPorts.getSelectedItem()));
         serial.openPort();
         if(!connectFlag){
