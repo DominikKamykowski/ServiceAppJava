@@ -1,3 +1,5 @@
+package App;
+
 import com.fazecast.jSerialComm.SerialPort;
 import javax.swing.*;
 import java.io.IOException;
@@ -41,9 +43,7 @@ public class Gui {
     };
 
     //Other
-    SerialPortClass serial = new SerialPortClass();//(int)cbBaudRate.getSelectedItem(), (SerialPort) cbPorts.getSelectedItem(),
-         //                                         cbParity.getSelectedIndex(),cbFlowControl.getSelectedIndex(),
-         //                                         (int)cbDataBits.getSelectedItem(),cbStopBits.getSelectedIndex()+1);
+    SerialPortClass serial = new SerialPortClass();
 
     public static Logger getLOGGER() {
         return LOGGER;
@@ -78,13 +78,12 @@ public class Gui {
             System.out.println(cbFlowControl.getSelectedItem());
             System.out.println(cbParity.getSelectedItem());
 
-
             LOGGER.info("connectButton clicked.");
             Login login = new Login();
-            if(!login.tryToLogIn(loginField.getText(), new String((passwordField.getPassword())))){
+            if(login.tryToLogIn(loginField.getText(), new String(passwordField.getPassword()))){
                  loginCorrect();
-            }else if((!(login.tryToLogIn(loginField.getText(), new String((passwordField.getPassword())))&&numberOfBadLogin<maxBadLoginNumber))){
-                System.out.println("Login failed! Try number: "+(numberOfBadLogin+1));
+            }else if((!(login.tryToLogIn(loginField.getText(), new String(passwordField.getPassword())))&&numberOfBadLogin<maxBadLoginNumber)){
+                LOGGER.info("Login failed! Try number: "+(numberOfBadLogin+1));
                 numberOfBadLogin++;
             }else{
                 System.exit(0);
@@ -150,16 +149,23 @@ public class Gui {
     }
 
     private void loginCorrect(){
-        Convert convert = new Convert();
+        try {
+            Convert convert = new Convert();
 
-        serial = new SerialPortClass(convert.baudRateConvert(cbBaudRate.getSelectedIndex()), (SerialPort) cbPorts.getSelectedItem(),
-                                         cbParity.getSelectedIndex(),convert.flowControlConvert(cbFlowControl.getSelectedIndex()),
-                                        (int)cbDataBits.getSelectedItem(),cbStopBits.getSelectedIndex()+1);
-        serial.setPort(((SerialPort) cbPorts.getSelectedItem()));
-        serial.openPort();
-        if(!connectFlag){
-            timer.schedule(task,100,50);
-            connectFlag = true;
+            serial = new SerialPortClass(convert.baudRateConvert(cbBaudRate.getSelectedIndex()), (SerialPort) cbPorts.getSelectedItem(),
+                    cbParity.getSelectedIndex(), convert.flowControlConvert(cbFlowControl.getSelectedIndex()),
+                    (int) cbDataBits.getSelectedItem(), cbStopBits.getSelectedIndex() + 1);
+            serial.setPort(((SerialPort) cbPorts.getSelectedItem()));
+            serial.openPort();
+            if (!connectFlag) {
+                timer.schedule(task, 100, 50);
+                connectFlag = true;
+            }
+        }catch(Exception ex){
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            ex.printStackTrace(pw);
+            LOGGER.warning(sw.toString());
         }
     }
 }

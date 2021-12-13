@@ -1,0 +1,20 @@
+gru 08, 2021 8:11:38 AM Gui <init>
+INFO: Init Gui
+gru 08, 2021 8:11:54 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 08, 2021 8:11:54 AM Login tryToLogIn
+INFO: Login: ZMT Password: !QAZ2wsx
+gru 08, 2021 8:11:54 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 08, 2021 8:11:54 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 08, 2021 8:11:54 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 08, 2021 8:11:58 AM SerialPortClass sendDataToSTM
+INFO: numberOfDataSend: 50 Data Send: StmDiode: false greenDiode: false redDiode: true
+gru 08, 2021 8:12:00 AM SerialPortClass sendDataToSTM
+INFO: numberOfDataSend: 88 Data Send: StmDiode: false greenDiode: true redDiode: true
+gru 08, 2021 8:12:02 AM SerialPortClass sendDataToSTM
+INFO: numberOfDataSend: 115 Data Send: StmDiode: true greenDiode: true redDiode: true
+gru 08, 2021 8:12:03 AM SerialPortClass sendDataToSTM
+INFO: numberOfDataSend: 138 Data Send: StmDiode: false greenDiode: true redDiode: true

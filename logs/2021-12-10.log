@@ -1,0 +1,244 @@
+gru 10, 2021 10:18:24 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:18:26 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:18:26 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:18:26 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:18:26 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:18:26 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:18:36 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:18:36 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:18:36 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:18:36 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:18:36 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:18:37 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:18:37 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:18:37 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:18:37 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:18:37 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:18:38 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:18:38 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:18:38 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:18:38 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:18:38 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:18:39 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:18:39 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:18:39 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:18:39 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:18:39 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:19:42 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:19:44 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:19:44 AM Login tryToLogIn
+INFO: Login: a Password: 
+gru 10, 2021 10:19:44 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:19:44 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:19:44 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:19:52 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:19:52 AM Login tryToLogIn
+INFO: Login: a Password: 
+gru 10, 2021 10:19:52 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:19:52 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:19:52 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:19:52 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:19:52 AM Login tryToLogIn
+INFO: Login: a Password: 
+gru 10, 2021 10:19:52 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:19:52 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:19:52 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:19:53 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:19:53 AM Login tryToLogIn
+INFO: Login: a Password: 
+gru 10, 2021 10:19:53 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:19:53 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:19:53 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:19:53 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:19:53 AM Login tryToLogIn
+INFO: Login: a Password: 
+gru 10, 2021 10:19:53 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:19:53 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:19:53 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:23:29 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:23:30 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:23:30 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:23:30 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:23:36 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:23:36 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:23:36 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:23:42 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:23:42 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:23:42 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:23:44 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:23:44 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:23:44 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:25:03 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:25:05 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:25:05 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:25:05 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:25:05 AM Gui lambda$new$0
+INFO: Login failed! Try number: 1
+gru 10, 2021 10:25:16 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:25:16 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:25:16 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:25:16 AM Gui lambda$new$0
+INFO: Login failed! Try number: 2
+gru 10, 2021 10:25:20 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:25:20 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:25:20 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:25:20 AM Gui lambda$new$0
+INFO: Login failed! Try number: 3
+gru 10, 2021 10:25:33 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:25:33 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:25:33 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:30:13 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:30:22 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:30:22 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:30:22 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:30:22 AM Gui lambda$new$0
+INFO: Login failed! Try number: 1
+gru 10, 2021 10:30:46 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:30:58 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:30:58 AM Login tryToLogIn
+INFO: Login: ZMT Password: ZMT
+gru 10, 2021 10:30:58 AM Login tryToLogIn
+INFO: Login: ZMT Password: ZMT
+gru 10, 2021 10:30:58 AM Gui lambda$new$0
+INFO: Login failed! Try number: 1
+gru 10, 2021 10:31:47 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:31:58 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:31:58 AM Login tryToLogIn
+INFO: Login: ZMT Password: ZMT
+gru 10, 2021 10:31:58 AM Login tryToLogIn
+INFO: Login: ZMT Password: ZMT
+gru 10, 2021 10:31:58 AM Gui lambda$new$0
+INFO: Login failed! Try number: 1
+gru 10, 2021 10:32:07 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:32:23 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:33:33 AM Login tryToLogIn
+INFO: Login: ZMT Password: ZMT
+gru 10, 2021 10:33:33 AM Login tryToLogIn
+INFO: Login: ZMT Password: ZMT
+gru 10, 2021 10:33:33 AM Gui lambda$new$0
+INFO: Login failed! Try number: 1
+gru 10, 2021 10:33:58 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:34:07 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:34:07 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:34:07 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:34:07 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:34:13 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:34:20 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:34:36 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:34:36 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:34:36 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:34:39 AM Gui <init>
+INFO: Init Gui
+gru 10, 2021 10:34:43 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:34:43 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:34:43 AM Login tryToLogIn
+INFO: Login:  Password: 
+gru 10, 2021 10:34:43 AM Gui lambda$new$0
+INFO: Login failed! Try number: 1
+gru 10, 2021 10:34:51 AM Gui lambda$new$0
+INFO: connectButton clicked.
+gru 10, 2021 10:34:51 AM Convert baudRateConvert
+INFO: returnValueBaudRate = default
+gru 10, 2021 10:34:51 AM Convert flowControlConvert
+INFO: flowControlConvert = default
+gru 10, 2021 10:34:51 AM SerialPortClass <init>
+INFO: Init Serial, BaudRade: 115200
+gru 10, 2021 10:34:54 AM SerialPortClass sendDataToSTM
+INFO: numberOfDataSend: 44 Data Send: StmDiode: false greenDiode: false redDiode: true
+gru 10, 2021 10:35:02 AM SerialPortClass sendDataToSTM
+INFO: numberOfDataSend: 181 Data Send: StmDiode: false greenDiode: true redDiode: true

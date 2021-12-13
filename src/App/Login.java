@@ -1,8 +1,10 @@
+package App;
+
 import java.util.logging.Logger;
 
 public class Login {
     private final String login = "ZMT";
-    private final String password = "!QAZ2wsx";
+    private final String password = "ZMT";
 
     private static final Logger LOGGER = Gui.getLOGGER();
 
@@ -10,7 +12,7 @@ public class Login {
     }
 
     public boolean tryToLogIn(String login,String password){
-        if(login==this.login && password==this.password){
+        if(login.equals(this.login) && password.equals(this.password)){
             System.out.println("Succesfull Login!");
             return true;
         }else{
@@ -18,5 +20,4 @@ public class Login {
             return false;
         }
     }
-
 }

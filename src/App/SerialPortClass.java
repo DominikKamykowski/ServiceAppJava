@@ -1,3 +1,5 @@
+package App;
+
 import com.fazecast.jSerialComm.SerialPort;
 
 import java.io.PrintWriter;
@@ -18,6 +20,7 @@ public class SerialPortClass {
 
     private static final Logger LOGGER = Gui.getLOGGER();
 
+
     private SerialPort port;
 
     public void setPort(SerialPort comPort) {
@@ -30,12 +33,14 @@ public class SerialPortClass {
             port.setFlowControl(this.flowControl);
             port.openPort();
 
-        }catch(Exception e){
+        }
+        catch(Exception e) {
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
             e.printStackTrace(pw);
             LOGGER.warning(sw.toString());
         }
+
     }
 
     public SerialPortClass(int baudRate, SerialPort port, int parity,int flowControl, int dataBits, int stopBits) {
@@ -48,12 +53,10 @@ public class SerialPortClass {
         LOGGER.info("Init Serial, BaudRade: "+baudRate);
     }
     public SerialPortClass(){
-
     }
 
     public void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){
         try{
-
             Convert byteCompare = new Convert();
             byte[] dataToWrite = {1,1,numberOfSendValues,(byte) ledState(diodeStmState),(byte) ledState(diodeGreenState),
                                  (byte)ledState(diodeRedState)};
@@ -68,12 +71,12 @@ public class SerialPortClass {
             port.writeBytes(dataToWrite,dataToWrite.length);
             previousData=dataToWrite;
             numberOfDataSend++;
+
         }catch(Exception e){
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
             e.printStackTrace(pw);
             LOGGER.warning(sw.toString());
-
         }
     }
 
@@ -85,11 +88,28 @@ public class SerialPortClass {
     public static SerialPort[] fillSerialComboBox(){
         SerialPort[] ports = SerialPort.getCommPorts();
         for (SerialPort port : ports) {
-            System.out.println(port.getSystemPortName());
+            LOGGER.info(port.getDescriptivePortName());
         }return ports;
-
     }
 
+    public int getParity() {
+        return parity;
+    }
 
+    public int getStopBits() {
+        return stopBits;
+    }
+
+    public int getFlowControl() {
+        return flowControl;
+    }
+
+    public int getDataBits() {
+        return dataBits;
+    }
+
+    public int getBaudRate() {
+        return baudRate;
+    }
 
 }

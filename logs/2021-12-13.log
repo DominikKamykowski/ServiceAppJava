@@ -1,0 +1,8 @@
+gru 13, 2021 7:12:49 AM Gui <init>
+INFO: Init Gui
+gru 13, 2021 7:12:49 AM SerialPortClass fillSerialComboBox
+INFO: Port komunikacyjny (COM1)
+gru 13, 2021 7:12:49 AM SerialPortClass fillSerialComboBox
+INFO: Prolific USB-to-Serial Comm Port (COM5)
+gru 13, 2021 7:12:49 AM SerialPortClass fillSerialComboBox
+INFO: STMicroelectronics STLink Virtual COM Port (COM7)
