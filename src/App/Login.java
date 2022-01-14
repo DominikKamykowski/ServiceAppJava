@@ -12,6 +12,9 @@ public class Login {
     }
 
     public boolean tryToLogIn(String login,String password){
+        /*! \brief Metoda sprawdzająca poprawność wprowadzonych danych logowania.
+         *
+         */
         if(login.equals(this.login) && password.equals(this.password)){
             System.out.println("Succesfull Login!");
             return true;

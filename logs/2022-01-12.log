@@ -1,0 +1,4 @@
+sty 12, 2022 2:05:10 PM App.Gui <init>
+INFO: Init Gui
+sty 12, 2022 2:05:10 PM App.SerialPortClass fillSerialComboBox
+INFO: Port komunikacyjny (COM1)

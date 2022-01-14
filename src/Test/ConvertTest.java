@@ -10,6 +10,9 @@ class ConvertTest {
 
     @Test
     void baudRateConvertProperly() {
+        /*! \brief Test jednostkowy sprawdzający poprawność konwersji danych klasy Convert.
+         *
+         */
         //given
         int cbIndex = 2;
         Convert convert = new Convert();
@@ -22,6 +25,9 @@ class ConvertTest {
 
     @Test
     void baudRateConvertIllegalArgumentException(){
+        /*! \brief Test jednostkowy sprawdzający poprawność zgłaszania wyjatku IllegalArgumentException.
+         *
+         */
         //given
         int cbIndex = 10;
         Convert convert = new Convert();

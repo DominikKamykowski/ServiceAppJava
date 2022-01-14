@@ -13,6 +13,9 @@ public class Convert {
     private static final Logger LOGGER = Gui.getLOGGER();
 
     public int flowControlConvert(int cbIndex){
+        /*! \brief Metoda konwertująca wartości comboBox'a na wartości SerialPort(kontrola przepływu).
+         *
+         */
         switch(cbIndex) {
             case 0:
                 returnValueFlowControl = SerialPort.FLOW_CONTROL_DISABLED;
@@ -36,6 +39,9 @@ public class Convert {
     }
 
     public int baudRateConvert(int cbIndex){
+        /*! \brief Metoda konwertująca wartości comboBox'a na wartości SerialPort(szybkosc transmisji).
+         *
+         */
             switch (cbIndex) {
                 case 0:
                     returnValueBaudRate = 1200;
@@ -75,6 +81,9 @@ public class Convert {
     }
 
     public boolean compare(byte[] byte1, byte[] byte2){
+        /*! \brief Metoda porównująca ramki danych.
+         *
+         */
         for(int i = startFrameOffset; i < frameLenght; i++){
             if(byte1[i] - byte2[i] != 0) return true;
         }return false;

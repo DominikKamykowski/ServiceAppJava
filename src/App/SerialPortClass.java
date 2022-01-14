@@ -28,11 +28,13 @@ public class SerialPortClass {
     }
 
     public void openPort(){
+        /*! \brief Metoda otwierająca port szeregowy.
+         *
+         */
         try {
             port.setComPortParameters(this.baudRate,this.dataBits,this.stopBits,this.parity);
             port.setFlowControl(this.flowControl);
             port.openPort();
-
         }
         catch(Exception e) {
             StringWriter sw = new StringWriter();
@@ -40,10 +42,12 @@ public class SerialPortClass {
             e.printStackTrace(pw);
             LOGGER.warning(sw.toString());
         }
-
     }
 
     public SerialPortClass(int baudRate, SerialPort port, int parity,int flowControl, int dataBits, int stopBits) {
+        /*! \brief Konstruktor ustawiający parametry portu szeregowego.
+         *
+         */
         this.parity = parity;
         this.flowControl = flowControl;
         this.dataBits = dataBits;
@@ -53,9 +57,15 @@ public class SerialPortClass {
         LOGGER.info("Init Serial, BaudRade: "+baudRate);
     }
     public SerialPortClass(){
+        /*! \brief Konstruktor bezparametrowy.
+         *
+         */
     }
 
     public void sendDataToSTM(boolean diodeStmState,boolean diodeGreenState, boolean diodeRedState){
+        /*! \brief Metoda wysyłająca ramkę danych do portu szeregowego.
+         *
+         */
         try{
             Convert byteCompare = new Convert();
             byte[] dataToWrite = {1,1,numberOfSendValues,(byte) ledState(diodeStmState),(byte) ledState(diodeGreenState),
@@ -86,6 +96,9 @@ public class SerialPortClass {
     }
 
     public static SerialPort[] fillSerialComboBox(){
+        /*! \brief Metoda statyczna zwracająca listę dostępnych portów.
+         *
+         */
         SerialPort[] ports = SerialPort.getCommPorts();
         for (SerialPort port : ports) {
             LOGGER.info(port.getDescriptivePortName());

@@ -13,8 +13,8 @@ import java.util.logging.SimpleFormatter;
 
 public class Gui {
     //Login
-    private final int maxBadLoginNumber = 3;
-    private int numberOfBadLogin;
+    private final int maxBadLoginNumber = 3;            //!< Maksymalna liczba logowań
+    private int numberOfBadLogin;                       //!< Zmienna przechowująca liczbę logowań
 
     //GUI
     private JCheckBox stmDiodeCheckBox;
@@ -32,7 +32,7 @@ public class Gui {
     private JComboBox<Integer> cbDataBits;
 
     //Timer
-    private boolean connectFlag = false;
+    private boolean connectFlag = false;                //!< Flaga timera
 
     Timer timer = new Timer();
     TimerTask task = new TimerTask() {
@@ -53,8 +53,10 @@ public class Gui {
 
     FileHandler fileHandler;
 
-
     public Gui() {
+        /*! \brief Konstruktor Gui
+         *   Klasa główna, implementująca funkcjonalność logów, timera, portu szeregowego.
+         */
 
         try {
             fileHandler = new FileHandler("C:/Users/Dominik/IdeaProjects/ServiceApplicationJava/logs/"+java.time.LocalDate.now()+".log",true);
@@ -92,6 +94,9 @@ public class Gui {
     }
 
     private void comboBoxFill() {
+        /*! \brief Wypelnienie ComboBox
+         *  Metoda wypełniająca comboBoxy.
+         */
         SerialPort[] ports = SerialPortClass.fillSerialComboBox();
         for(SerialPort port : ports){
             cbPorts.addItem(port);
@@ -129,12 +134,14 @@ public class Gui {
 
     public static void main (String[] args){
         try{
-            JFrame frame1 = new JFrame("Test");
+            JFrame frame1 = new JFrame("ServiceApplication");
             frame1.setContentPane(new Gui().panel1);
             frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame1.pack();
             frame1.setSize(700,400);
             frame1.setVisible(true);
+            JFrame frame2 = new JFrame("");
+            JFrame frame3 = new JFrame("");
 
         }catch(Exception e){
             StringWriter sw = new StringWriter();
@@ -145,6 +152,9 @@ public class Gui {
     }
 
     public void sendData(){
+        /*! \brief Metoda wysyłająca dane do klasy SerialPort
+         *
+         */
         serial.sendDataToSTM(stmDiodeCheckBox.isSelected(),greenDiodeCheckBox.isSelected(),redDiodeCheckBox.isSelected());
     }
 

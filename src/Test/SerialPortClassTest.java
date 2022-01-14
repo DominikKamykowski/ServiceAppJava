@@ -10,6 +10,9 @@ class SerialPortClassTest {
 
     @Test
     void serialPort(){
+        /*! \brief Test jednostkowy sprawdzający poprawność zapisywania parametrów portu szeregowego.
+         *
+         */
         //given
         int baudRate = 115200;
         int parity = 0;
